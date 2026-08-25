@@ -95,12 +95,14 @@
   }
   .hero-tag{margin-bottom:22px;}
   .hero-name{
-    font-size:clamp(4.2rem,15vw,11rem);
-    line-height:0.86;
+    font-size:clamp(2.6rem,7.2vw,6.4rem);
+    line-height:0.98;
     color:var(--paper);
     position:relative;
     display:inline-block;
+    max-width:15ch;
   }
+  .hero-name .nick{color:var(--ember);}
   .hero-role{
     margin-top:18px;
     font-size:clamp(1.1rem,2.6vw,1.6rem);
@@ -132,6 +134,46 @@
   .meta-row strong{color:var(--paper);font-weight:500;}
 
   .hero-ctas{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;}
+
+  .org-badge{
+    margin-top:16px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    width:fit-content;
+  }
+  .org-dot{width:9px;height:9px;background:var(--ember);border-radius:50%;box-shadow:0 0 10px 2px var(--ember-dim);}
+  .org-name{
+    font-size:clamp(1.3rem,2.6vw,1.9rem);
+    letter-spacing:0.03em;
+    color:var(--paper);
+    border-bottom:2px solid var(--ember);
+    padding-bottom:2px;
+  }
+
+  .hero-stats{
+    margin-top:44px;
+    display:flex;
+    gap:1px;
+    background:var(--grid-line-strong);
+    border:1px solid var(--grid-line-strong);
+    width:fit-content;
+    max-width:100%;
+  }
+  .hero-stat{
+    background:var(--panel);
+    padding:20px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    min-width:140px;
+  }
+  .hero-stat-num{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--ember);line-height:1;}
+  .hero-stat-lbl{font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--paper-dim);}
+  @media (max-width:640px){
+    .hero-stats{flex-direction:column;width:100%;}
+    .hero-stat{min-width:0;}
+  }
   .btn{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.78rem;
@@ -372,6 +414,15 @@
   }
   .video-frame .bar .live{color:var(--ember);}
   .video-frame iframe{width:100%;aspect-ratio:16/9;display:block;border:none;}
+  .video-frame.small{padding:6px;}
+  .video-gallery{
+    margin-top:36px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  @media (max-width:760px){.video-gallery{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:460px){.video-gallery{grid-template-columns:1fr;}}
 
   /* ---------- quote ---------- */
   .quote-sec{padding:100px clamp(20px,6vw,64px);text-align:center;position:relative;}
@@ -476,12 +527,12 @@
 <div class="grid-bg"></div>
 
 <nav>
-  <div class="navmark"><div class="dot"></div><span>Caio "CX1" Coutinho</span></div>
+  <div class="navmark"><div class="dot"></div><span>CX1</span></div>
   <div class="navlinks">
+    <a href="#videos">Vídeos</a>
     <a href="#sobre">Sobre</a>
     <a href="#trajetoria">Trajetória</a>
     <a href="#setup">Setup</a>
-    <a href="#videos">Vídeos</a>
     <a href="#redes">Redes</a>
   </div>
 </nav>
@@ -515,21 +566,39 @@
     </svg>
   </div>
 
-  <p class="eyebrow mono">COMISSÃO TÉCNICA · CS2 · FLUXO W7M</p>
+  <p class="eyebrow mono">COMISSÃO TÉCNICA · CS2</p>
+  <div class="org-badge">
+    <span class="org-dot"></span>
+    <span class="org-name display">FLUXO</span>
+  </div>
   <h1 class="hero-name display">CX1</h1>
-  <p class="hero-role">Caio Coutinho — <em>Assistant Coach,</em> Fluxo W7M</p>
+  <p class="hero-role">Caio Coutinho — <em>Assistant Coach</em></p>
   <p class="hero-tagline">Cada round é decidido antes de ser jogado. Leitura de mapa, preparação de bloco e ajuste em tempo real — o trabalho que não aparece no placar, mas define o resultado.</p>
 
   <div class="meta-row mono">
     <span>🇧🇷 <strong>Manaus, AM</strong></span>
     <span>Nascido <strong>14.09.1998</strong></span>
-    <span>Pico de ranking <strong>#28</strong> mundial</span>
     <span>Coach desde <strong>2020</strong></span>
   </div>
 
   <div class="hero-ctas">
     <a class="btn btn-primary" href="https://www.twitch.tv/caiocx1" target="_blank" rel="noopener">Assistir na Twitch</a>
     <a class="btn btn-ghost" href="https://www.hltv.org/coach/22142/cx1" target="_blank" rel="noopener">Perfil HLTV ↗</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num display">#28</span>
+      <span class="hero-stat-lbl mono">Ranking mundial</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num display">18</span>
+      <span class="hero-stat-lbl mono">Títulos conquistados</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num display">6</span>
+      <span class="hero-stat-lbl mono">Anos de carreira</span>
+    </div>
   </div>
 
   <div class="scroll-hint">Rolar</div>
@@ -782,11 +851,22 @@
 
     <div class="video-frame">
       <div class="bar">
-        <span>CANAL · CX1</span>
-        <span class="live">● Atualização automática</span>
+        <span>EM DESTAQUE</span>
+        <span class="live">● Canal CX1</span>
       </div>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg" title="Vídeos recentes de CX1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=0" title="Vídeo em destaque de CX1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+
+    <p class="sub-eyebrow">Galeria do canal</p>
+    <div class="video-gallery">
+      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=1" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=2" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=3" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=4" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=5" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=6" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
+    </div>
+    <a class="btn btn-ghost" style="margin-top:24px;" href="https://www.youtube.com/channel/UCR9qqfN1JObpD2BgJQW4cCg" target="_blank" rel="noopener">Ver canal completo ↗</a>
   </div>
 </section>
 
