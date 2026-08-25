@@ -367,6 +367,59 @@
   .trophy-list::-webkit-scrollbar{width:6px;}
   .trophy-list::-webkit-scrollbar-thumb{background:var(--grid-line-strong);}
 
+  /* ---------- mobile layout ---------- */
+  @media (max-width:640px){
+    nav{padding:18px 16px;}
+    .navmark span{font-size:0.95rem;}
+    .hero{padding:108px 16px 72px;}
+    .hero-name{font-size:clamp(3.6rem,18vw,5.2rem);}
+    .hero-role{font-size:1rem;line-height:1.45;}
+    .hero-tagline{font-size:0.92rem;padding-left:12px;}
+    .meta-row{font-size:0.68rem;gap:8px 0;}
+    .meta-row span{padding:0 10px;}
+    .meta-row span:first-child{padding-left:0;}
+    .hero-ctas{margin-top:30px;flex-direction:column;align-items:stretch;}
+    .btn{justify-content:center;padding:13px 16px;font-size:0.7rem;}
+    .hero-stats{margin-top:32px;}
+    .hero-stat{padding:16px 18px;}
+    .scroll-hint{display:none;}
+    .radar{width:88vw;right:0;top:38%;}
+    .wrap{padding:76px 16px;}
+    .wrap.tight{padding-top:56px;padding-bottom:56px;}
+    .sec-head{margin-bottom:36px;}
+    .sec-title{font-size:clamp(2.3rem,13vw,3.4rem);}
+    .sec-sub{font-size:0.9rem;}
+    .about-lead{font-size:1.2rem;}
+    .about-body p{font-size:0.94rem;line-height:1.7;}
+    .stat-row{grid-template-columns:1fr;}
+    .stat-cell{padding:16px 18px;}
+    .tl-item{gap:18px;padding:24px 0;}
+    .tl-node{grid-column:2;}
+    .tl-dot{left:-27px;}
+    .tl-team{font-size:1.1rem;}
+    .tl-team .status{font-size:0.55rem;margin-left:6px;padding:3px 6px;}
+    .tl-role,.tl-roster{font-size:0.82rem;}
+    .trophy-row{grid-template-columns:auto 1fr;gap:5px 10px;padding:9px 12px;}
+    .trophy-event{min-width:0;overflow-wrap:anywhere;}
+    .trophy-prize{grid-column:2;text-align:right;white-space:normal;}
+    .setup-col{padding:24px 18px;}
+    .spec-row{display:grid;grid-template-columns:1fr;gap:5px;font-size:0.84rem;}
+    .spec-val{text-align:left;overflow-wrap:anywhere;}
+    .video-frame{padding:7px;}
+    .video-frame .bar{padding:5px 7px 12px;font-size:0.58rem;}
+    .quote-sec{padding:72px 16px;}
+    .quote-text{font-size:clamp(1.35rem,7vw,2rem);}
+    .partner-card{padding:24px 18px;gap:20px;}
+    .partner-card > a{min-width:0 !important;width:100%;}
+    .partner-info .p-name{font-size:1.4rem;}
+    .partner-info .p-desc{font-size:0.82rem;line-height:1.5;}
+    .coupon span{padding:10px 12px;}
+    .social-grid{grid-template-columns:1fr 1fr;}
+    .social-card{padding:22px 18px;}
+    .social-name{font-size:1.15rem;}
+    footer{padding:40px 16px 28px;}
+  }
+
   /* ---------- setup ---------- */
   .setup-grid{
     display:grid;
