@@ -466,7 +466,7 @@
     text-transform:uppercase;
   }
   .video-frame .bar .live{color:var(--ember);}
-  .video-frame iframe{width:100%;aspect-ratio:16/9;display:block;border:none;}
+  .video-frame iframe,.video-player{width:100%;aspect-ratio:16/9;display:block;border:none;}
   .video-frame.small{padding:6px;}
   .video-gallery{
     margin-top:36px;
@@ -907,17 +907,17 @@
         <span>EM DESTAQUE</span>
         <span class="live">● Canal CX1</span>
       </div>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=0" title="Vídeo em destaque de CX1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-player" data-index="0" title="Vídeo em destaque de CX1"></div>
     </div>
 
     <p class="sub-eyebrow">Galeria do canal</p>
     <div class="video-gallery">
-      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=1" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=2" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=3" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=4" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=5" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg&index=6" title="Vídeo do canal CX1" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-frame small"><div class="video-player" data-index="1" title="Vídeo do canal CX1"></div></div>
+      <div class="video-frame small"><div class="video-player" data-index="2" title="Vídeo do canal CX1"></div></div>
+      <div class="video-frame small"><div class="video-player" data-index="3" title="Vídeo do canal CX1"></div></div>
+      <div class="video-frame small"><div class="video-player" data-index="4" title="Vídeo do canal CX1"></div></div>
+      <div class="video-frame small"><div class="video-player" data-index="5" title="Vídeo do canal CX1"></div></div>
+      <div class="video-frame small"><div class="video-player" data-index="6" title="Vídeo do canal CX1"></div></div>
     </div>
     <a class="btn btn-ghost" style="margin-top:24px;" href="https://www.youtube.com/channel/UCR9qqfN1JObpD2BgJQW4cCg" target="_blank" rel="noopener">Ver canal completo ↗</a>
   </div>
@@ -1065,6 +1065,35 @@
   <div class="f-left mono">CX1 · CAIO COUTINHO — COMISSÃO TÉCNICA, FLUXO</div>
   <div class="f-right mono">STATUS: <span>ATIVO</span> · CS2 2026</div>
 </footer>
+
+<script>
+  const uploadsPlaylist = 'UUR9qqfN1JObpD2BgJQW4cCg';
+  const videoPlayers = document.querySelectorAll('.video-player');
+
+  function onYouTubeIframeAPIReady(){
+    videoPlayers.forEach((container) => {
+      const index = Number(container.dataset.index);
+      new YT.Player(container, {
+        width: '100%',
+        height: '100%',
+        playerVars: {
+          listType: 'playlist',
+          list: uploadsPlaylist,
+          index,
+          rel: 0,
+          modestbranding: 1
+        },
+        events: {
+          onReady: (event) => event.target.cuePlaylist({list: uploadsPlaylist, index})
+        }
+      });
+    });
+  }
+
+  const youtubeApi = document.createElement('script');
+  youtubeApi.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(youtubeApi);
+</script>
 
 </body>
 </html>
