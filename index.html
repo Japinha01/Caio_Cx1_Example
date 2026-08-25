@@ -849,29 +849,21 @@
       <h2 class="sec-title display">Conteúdo<br><span class="accent">recente</span></h2>
     </div>
 
-    <!-- O iframe principal embutindo a Playlist de Uploads (videoseries) é aceitável aqui -->
-    <div class="video-frame">
-      <div class="bar">
-        <span>EM DESTAQUE</span>
-        <span class="live">● Canal CX1</span>
-      </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=UUR9qqfN1JObpD2BgJQW4cCg" title="Vídeo em destaque de CX1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- O JavaScript vai injetar o vídeo em destaque aqui dentro -->
+    <div class="video-frame" id="video-destaque">
+      <p style="padding: 20px; text-align: center; color: var(--paper-dim);">Carregando vídeo mais recente...</p>
     </div>
 
     <p class="sub-eyebrow">Galeria do canal</p>
-    <div class="video-gallery">
-      <!-- Substitua ID_DO_VIDEO_X pelos IDs reais dos últimos vídeos do canal. Nunca repita a videoseries! -->
-      <div class="video-frame small"><iframe width="560" height="315" src="https://www.youtube.com/embed/ID_DO_VIDEO_1" title="Vídeo 1 do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe width="560" height="315" src="https://www.youtube.com/embed/ID_DO_VIDEO_2" title="Vídeo 2 do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe width="560" height="315" src="https://www.youtube.com/embed/ID_DO_VIDEO_3" title="Vídeo 3 do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe width="560" height="315" src="https://www.youtube.com/embed/ID_DO_VIDEO_4" title="Vídeo 4 do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe width="560" height="315" src="https://www.youtube.com/embed/ID_DO_VIDEO_5" title="Vídeo 5 do canal CX1" loading="lazy" allowfullscreen></iframe></div>
-      <div class="video-frame small"><iframe width="560" height="315" src="https://www.youtube.com/embed/ID_DO_VIDEO_6" title="Vídeo 6 do canal CX1" loading="lazy" allowfullscreen></iframe></div>
+    <!-- O JavaScript vai injetar os 6 vídeos seguintes aqui dentro -->
+    <div class="video-gallery" id="video-galeria">
+      <!-- Os iframes menores vão aparecer aqui automaticamente -->
     </div>
     
     <a class="btn btn-ghost" style="margin-top:24px;" href="https://www.youtube.com/channel/UCR9qqfN1JObpD2BgJQW4cCg" target="_blank" rel="noopener">Ver canal completo ↗</a>
   </div>
 </section>
+
 <!-- QUOTE -->
 <section class="quote-sec">
   <div class="quote-mark">"</div>
@@ -1015,5 +1007,46 @@
   <div class="f-right mono">STATUS: <span>ATIVO</span> · CS2 2026</div>
 </footer>
 
+<!-- SCRIPT PARA PUXAR OS VÍDEOS AUTOMATICAMENTE -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const channelId = 'UCR9qqfN1JObpD2BgJQW4cCg';
+  const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const videos = data.items;
+      
+      if (videos && videos.length > 0) {
+        const idDestaque = videos[0].link.split('v=')[1];
+        
+        document.getElementById('video-destaque').innerHTML = `
+          <div class="bar">
+            <span>EM DESTAQUE</span>
+            <span class="live">● Canal CX1</span>
+          </div>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/${idDestaque}" title="${videos[0].title}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        `;
+
+        let galeriaHTML = '';
+        for (let i = 1; i < 7 && i < videos.length; i++) {
+          const idGaleria = videos[i].link.split('v=')[1];
+          galeriaHTML += `
+            <div class="video-frame small">
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/${idGaleria}" title="${videos[i].title}" loading="lazy" allowfullscreen></iframe>
+            </div>
+          `;
+        }
+        document.getElementById('video-galeria').innerHTML = galeriaHTML;
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao carregar vídeos do YouTube:', error);
+      document.getElementById('video-destaque').innerHTML = '<p style="padding: 20px; text-align: center; color: var(--paper-dim);">Não foi possível carregar os vídeos.</p>';
+    });
+});
+</script>
 </body>
 </html>
