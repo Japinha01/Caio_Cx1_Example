@@ -53,7 +53,6 @@
     display:inline-block;
   }
 
-  /* ---------- background grid ---------- */
   .grid-bg{
     position:fixed;
     inset:0;
@@ -68,7 +67,6 @@
 
   section{position:relative;z-index:1;}
 
-  /* ---------- nav ---------- */
   nav{
     position:fixed;top:0;left:0;right:0;z-index:50;
     display:flex;align-items:center;justify-content:space-between;
@@ -84,7 +82,6 @@
   .navlinks a:hover{color:var(--ember);}
   @media (max-width:900px){.navlinks{display:none;}}
 
-  /* ---------- hero ---------- */
   .hero{
     min-height:100svh;
     display:flex;
@@ -193,7 +190,6 @@
   .btn-primary:hover{background:#ff7247;}
   .btn-ghost:hover{border-color:var(--paper);background:var(--grid-line);}
 
-  /* radar mark, signature element */
   .radar{
     position:absolute;
     right:clamp(-40px,2vw,60px);
@@ -230,7 +226,6 @@
   }
   .scroll-hint::after{content:"";width:1px;height:34px;background:linear-gradient(var(--paper-dim),transparent);}
 
-  /* ---------- section shell ---------- */
   .wrap{padding:120px clamp(20px,6vw,64px);max-width:1240px;margin:0 auto;}
   .wrap.tight{padding-top:80px;padding-bottom:80px;}
   .sec-head{margin-bottom:56px;}
@@ -238,7 +233,6 @@
   .sec-title .accent{color:var(--ember);}
   .sec-sub{margin-top:18px;max-width:560px;color:var(--paper-dim);line-height:1.7;font-size:0.98rem;}
 
-  /* ---------- sobre ---------- */
   .about-grid{
     display:grid;
     grid-template-columns:1fr 1px 1.1fr;
@@ -272,7 +266,6 @@
   .stat-cell .num{font-family:'Anton',sans-serif;font-size:2.1rem;color:var(--ember);line-height:1;}
   .stat-cell .lbl{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--paper-dim);margin-top:8px;display:block;}
 
-  /* ---------- timeline / team cards ---------- */
   .timeline{position:relative;padding-left:8px;}
   .tl-line{position:absolute;left:96px;top:8px;bottom:8px;width:1px;background:var(--grid-line-strong);}
   @media (max-width:640px){.tl-line{left:14px;}}
@@ -367,7 +360,6 @@
   .trophy-list::-webkit-scrollbar{width:6px;}
   .trophy-list::-webkit-scrollbar-thumb{background:var(--grid-line-strong);}
 
-  /* ---------- mobile layout ---------- */
   @media (max-width:640px){
     nav{padding:18px 16px;}
     .navmark span{font-size:0.95rem;}
@@ -420,7 +412,6 @@
     footer{padding:40px 16px 28px;}
   }
 
-  /* ---------- setup ---------- */
   .setup-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -450,7 +441,6 @@
   .spec-key{color:var(--paper-dim);font-family:'IBM Plex Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.04em;padding-top:2px;flex-shrink:0;}
   .spec-val{color:var(--paper);text-align:right;font-weight:500;}
 
-  /* ---------- videos ---------- */
   .video-frame{
     border:1px solid var(--grid-line-strong);
     background:var(--panel);
@@ -477,7 +467,6 @@
   @media (max-width:760px){.video-gallery{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:460px){.video-gallery{grid-template-columns:1fr;}}
 
-  /* ---------- quote ---------- */
   .quote-sec{padding:100px clamp(20px,6vw,64px);text-align:center;position:relative;}
   .quote-sec::before,.quote-sec::after{
     content:"";
@@ -495,7 +484,6 @@
   }
   .quote-attr{margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--paper-dim);letter-spacing:0.1em;text-transform:uppercase;}
 
-  /* ---------- parceiros ---------- */
   .partner-card{
     border:1px solid var(--grid-line-strong);
     background:var(--panel);
@@ -526,7 +514,6 @@
   .coupon .lbl{color:var(--paper-dim);border-right:1px dashed var(--ember);}
   .coupon .code{color:var(--ember);font-weight:600;font-size:0.85rem;}
 
-  /* ---------- socials / plataformas ---------- */
   .social-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
@@ -562,7 +549,6 @@
     margin:56px 0 16px;
   }
 
-  /* ---------- footer ---------- */
   footer{
     padding:56px clamp(20px,6vw,64px) 40px;
     border-top:1px solid var(--grid-line-strong);
@@ -590,7 +576,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="radar" aria-hidden="true">
     <svg viewBox="0 0 420 420">
@@ -657,7 +642,6 @@
   <div class="scroll-hint">Rolar</div>
 </section>
 
-<!-- SOBRE -->
 <section id="sobre">
   <div class="wrap">
     <div class="sec-head">
@@ -693,7 +677,6 @@
   </div>
 </section>
 
-<!-- TRAJETORIA -->
 <section id="trajetoria">
   <div class="wrap tight">
     <div class="sec-head">
@@ -705,7 +688,6 @@
     <div class="timeline">
       <div class="tl-line"></div>
 
-      <!-- FLUXO -->
       <div class="tl-item current">
         <div class="tl-date mono">2026<br>— atual</div>
         <div class="tl-node">
@@ -727,7 +709,6 @@
         </div>
       </div>
 
-      <!-- ODDIK -->
       <div class="tl-item">
         <div class="tl-date mono">2025<br>2026</div>
         <div class="tl-node">
@@ -789,7 +770,6 @@
         </div>
       </div>
 
-      <!-- SHARKS YOUNGSTERS -->
       <div class="tl-item">
         <div class="tl-date mono">2023<br>2024</div>
         <div class="tl-node">
@@ -817,7 +797,6 @@
         </div>
       </div>
 
-      <!-- YAWARA -->
       <div class="tl-item">
         <div class="tl-date mono">2022</div>
         <div class="tl-node">
@@ -835,7 +814,6 @@
         </div>
       </div>
 
-      <!-- FIRST MEMORY -->
       <div class="tl-item">
         <div class="tl-date mono">2020<br>2022</div>
         <div class="tl-node">
@@ -862,7 +840,6 @@
   </div>
 </section>
 
-<!-- SETUP -->
 <section id="setup">
   <div class="wrap tight">
     <div class="sec-head">
@@ -894,7 +871,6 @@
   </div>
 </section>
 
-<!-- VIDEOS -->
 <section id="videos">
   <div class="wrap tight">
     <div class="sec-head">
@@ -923,14 +899,12 @@
   </div>
 </section>
 
-<!-- QUOTE -->
 <section class="quote-sec">
   <div class="quote-mark">"</div>
   <p class="quote-text">All progress takes place<br>outside the comfort zone.</p>
   <p class="quote-attr">— CX1</p>
 </section>
 
-<!-- PARCEIROS + PLATAFORMAS + REDES -->
 <section id="redes">
   <div class="wrap tight">
     <div class="sec-head">
